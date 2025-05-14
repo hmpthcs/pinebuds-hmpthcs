@@ -29,8 +29,16 @@ $ curl https://armkeil.blob.core.windows.net/developer/Files/downloads/gnu-rm/9-
 # Initial try (errors):
 $ PATH="${PATH}:src/gcc-arm-none-eabi-9-2019-q4-major/bin" make -j "$(nproc)" T=open_source DEBUG=1
 
-make[1]: hostname: No such file or directory
-  LDS     _best1000.lds
-/bin/sh: line 1: arm-none-eabi-gcc: command not found
-[...]
+  make[1]: hostname: No such file or directory
+    LDS     _best1000.lds
+    /bin/sh: line 1: arm-none-eabi-gcc: command not found
+  [...]
+
+# Install toolchain via pacman? More (but different) errors:
+$ sudo pacman -S arm-none-eabi-gcc
+  
+  make[1]: hostname: No such file or directory
+    LDS     _best1000.lds
+  arm-none-eabi-gcc: fatal error: cannot read spec file 'nano.specs': No such file or directory
+  [...]
 ```
